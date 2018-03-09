@@ -221,7 +221,7 @@ int inline bestMove(board grid, int depth) {
             double score1 = expectiMax(grid1, depth);
             if(score1 > highestScore)
                 highestScore = score1, move = i;
-            cout << "Score1 " << i << ": " << score1 << endl;
+            //cout << "Score1 " << i << ": " << score1 << endl;
         }
     }
 
@@ -256,7 +256,11 @@ int main(int argc ,char * argv[]) {
     
     int soFar = 1;
 
-    while(true) {
+    int move = bestMove(matrix, depth);   //move to be printed
+
+    printf("%d", move);
+
+    /*while(true) {
         int move = bestMove(matrix, depth);   //move to be printed
         cout << "Move: " << move << endl;
         cout << "Moves so far: " << soFar++ << endl;
@@ -291,6 +295,6 @@ int main(int argc ,char * argv[]) {
                 if(!matrix.arr[i][j])
                     ind++;
             }
-    }
+    }*/
     return 0;
 }
