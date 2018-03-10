@@ -10,7 +10,7 @@ git clone https://github.com/Uditgulati/2048-AI.git
 
 cd 2048-AI
 
-pip install requirements.txt
+pip3 install -r requirements.txt
 
 g++ ai.cpp
 
