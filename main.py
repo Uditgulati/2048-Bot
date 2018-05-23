@@ -56,9 +56,10 @@ def run_game(game_class=Game2048, title='2048', data_dir=None):
                           os.path.join(data_dir, '2048.%d.state'))
     mv = None
     oldBoard = copy.deepcopy(manager.game.grid)
+    iniFlag = False
     try:
         while True:
-            if oldBoard != manager.game.grid:
+            if iniFlag:
                 oldBoard = copy.deepcopy(manager.game.grid)
                 print("hello")
                 convGrid = convert(manager.game.grid)
@@ -78,8 +79,7 @@ def run_game(game_class=Game2048, title='2048', data_dir=None):
                 elif mv == 3:
                     eve.key = K_DOWN
                 else:
-                    eve.key = K_1
-                    print("fuck!!")
+                    eve.key = K_LEFT
                 pygame.event.post(eve)
 
             event = pygame.event.wait()
@@ -87,6 +87,8 @@ def run_game(game_class=Game2048, title='2048', data_dir=None):
             for event in pygame.event.get():
                 manager.dispatch(event)
             manager.draw()
+            if oldBoard != manager.game.grid:
+                iniFlag = True
     finally:
         pygame.quit()
         manager.close()
